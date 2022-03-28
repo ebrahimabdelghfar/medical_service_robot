@@ -1,0 +1,15 @@
+<launch>
+
+  <node
+    name="line_follower_left"
+    pkg="service_robot"
+    type="line_following_code11.py" />
+  <node
+    name="line_follower_rigt"
+    pkg="service_robot"
+    type="line_following_code.py" />
+  <node
+    name="serve_pill"
+    pkg="service_robot"
+    type="serve_pills.py" />
+</launch>
