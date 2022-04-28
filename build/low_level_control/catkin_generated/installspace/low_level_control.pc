@@ -1,8 +1,0 @@
-prefix=/home/ebrahim/medical_robot/install
-
-Name: low_level_control
-Description: Description of low_level_control
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
