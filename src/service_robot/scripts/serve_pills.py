@@ -22,6 +22,11 @@ def proximity_sensor(msg):
         box[1].publish(origin_of_boxes[1])
         box[3].publish(origin_of_boxes[3])
         rospy.sleep(10)
+        motor_RL.publish(7)
+        motor_FL.publish(7)
+        motor_RR.publish(7)
+        motor_FR.publish(7)
+        rospy.sleep(3)
         condition=0
         con2=0
 

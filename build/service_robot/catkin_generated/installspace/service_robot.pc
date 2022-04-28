@@ -1,0 +1,8 @@
+prefix=/home/ebrahim/medical_robot/install
+
+Name: service_robot
+Description: Description of service_robot
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

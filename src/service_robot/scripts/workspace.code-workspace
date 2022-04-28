@@ -2,6 +2,10 @@
 	"folders": [
 		{
 			"path": "../../.."
+		},
+		{
+			"name": "low_level",
+			"path": "../../low_level_control/src/low_level"
 		}
 	],
 	"settings": {

@@ -1,0 +1,2 @@
+low_level_control:service_robot
+-DCATKIN_DEVEL_PREFIX=/home/ebrahim/medical_robot/devel -DCMAKE_INSTALL_PREFIX=/home/ebrahim/medical_robot/install -G Unix Makefiles

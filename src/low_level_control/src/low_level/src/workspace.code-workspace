@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "water_tank",
+			"path": "../../../../../../Desktop/water_tank/water_tank"
+		}
+	],
+	"settings": {
+		"python.autoComplete.extraPaths": [
+			"/home/ebrahim/medical_robot/devel/lib/python3/dist-packages",
+			"/home/ebrahim/husky_robot_sim/devel/lib/python3/dist-packages",
+			"/opt/ros/noetic/lib/python3/dist-packages"
+		],
+		"python.analysis.extraPaths": [
+			"/home/ebrahim/medical_robot/devel/lib/python3/dist-packages",
+			"/home/ebrahim/husky_robot_sim/devel/lib/python3/dist-packages",
+			"/opt/ros/noetic/lib/python3/dist-packages"
+		]
+	}
+}
