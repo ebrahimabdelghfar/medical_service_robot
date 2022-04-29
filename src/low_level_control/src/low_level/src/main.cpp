@@ -1,14 +1,22 @@
-#include <util/atomic.h>
 #include<Arduino.h>
 // Pins
 #define ENCA 3
 #define ENCB 2
-#define PWM 9
-#define IN1 8
-#define IN2 7
+#define PWM 5
+#define IN1 7
+#define IN2 8
+#define enable A0
 
 // globals
 long prevT = 0;
+float eprev = 0;
+
+
+  float vt = 44;
+  float cond=0;
+
+
+
 int posPrev = 0;
 // Use the "volatile" directive for variables
 // used in an interrupt
@@ -72,20 +80,19 @@ void setup() {
   pinMode(PWM,OUTPUT);
   pinMode(IN1,OUTPUT);
   pinMode(IN2,OUTPUT);
+  pinMode(enable,OUTPUT);
+  digitalWrite(enable,HIGH);    
 
   attachInterrupt(digitalPinToInterrupt(ENCA),readEncoder,RISING);
 }
 
 void loop() {
 
-  // read the position in an atomic block
-  // to avoid potential misreads
   int pos = 0;
   float velocity2 = 0;
-  ATOMIC_BLOCK(ATOMIC_RESTORESTATE){
-    pos = pos_i;
-    velocity2 = velocity_i;
-  }
+  pos = pos_i;
+  velocity2 = velocity_i;
+  
 
   // Compute velocity with method 1
   long currT = micros();
@@ -95,25 +102,38 @@ void loop() {
   prevT = currT;
 
   // Convert count/s to RPM
-  float v1 = velocity1/330.0*60.0;
-  float v2 = velocity2/330.0*60.0;
+  float v1 = velocity1/320*60.0;
+  float v2 = velocity2/320*60.0;
 
   // Low-pass filter (25 Hz cutoff)
   v1Filt = 0.854*v1Filt + 0.0728*v1 + 0.0728*v1Prev;
   v1Prev = v1;
   v2Filt = 0.854*v2Filt + 0.0728*v2 + 0.0728*v2Prev;
   v2Prev = v2;
-
+  
   // Set a target
-  float vt = 210;
-
+  //float vt = 250*sin(prevT/1e6);
+  if(Serial.available()>0){
+      cond = Serial.parseFloat();              //Read user input and hold it in a variable
+    }    
+    if (cond>-10 && cond<10){
+      vt=0;        
+    }else if(cond>250){
+      vt=250;
+    }else if(cond<-250){
+      vt=-250;
+    }else{
+      vt=cond;}
+  
   // Compute the control signal u
-  float kp = 5;
-  float ki = 10;
+  float kp = 2.5;
+  float ki = 0.5;
+  float kd = 0.08;
   float e = vt-v1Filt;
   eintegral = eintegral + e*deltaT;
-  
-  float u = kp*e + ki*eintegral;
+  float dedt = (e-eprev)/(deltaT);
+
+  float u = kp*e + ki*eintegral+dedt*kd;
 
   // Set the motor speed and direction
   int dir = 1;
@@ -125,12 +145,17 @@ void loop() {
     pwr = 255;
   }
   setMotor(dir,pwr,PWM,IN1,IN2);
+  eprev = e;
+  
+  int gra = 250;
 
   Serial.print(vt);
   Serial.print(" ");
   Serial.print(v1Filt);
+  Serial.print(" ");
+
+  Serial.print(gra);
   Serial.println();
+
   delay(1);
 }
-
-
