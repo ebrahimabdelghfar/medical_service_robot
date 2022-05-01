@@ -4,8 +4,8 @@
 			"path": "../../.."
 		},
 		{
-			"name": "low_level",
-			"path": "../../low_level_control/src/low_level"
+			"name": "low_level_control",
+			"path": "../../low_level_control/low_level_control"
 		}
 	],
 	"settings": {
