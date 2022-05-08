@@ -195,22 +195,28 @@ void loop() {
   if (pwr_R<0){
     dir = -1;
   }
+  if (pwr_l<0){
+    dir_l = -1;
+  }
+   pwr_R =(int)fabs(pwr_R);
+   pwr_l =(int)fabs(pwr_l);
   if(pwr_R > 255){
     pwr_R = 255;
   }
 
-  if (pwr_l<0){
-    dir_l = -1;
-  }
   if(pwr_l > 255){
     pwr_l = 255;
   }
   setMotor(dir_l,pwr_l,PWM,IN1,IN2);
   setMotor(dir,pwr_R,PWM2,IN3,IN4);
+  int HE=255;
   Serial.println(v1Filt);
   Serial.print(" ");
   Serial.print(vt);
   Serial.print(" ");
   Serial.print(v2Filt);
   Serial.print(" ");
+  Serial.print(HE);
+  Serial.print(" ");
+  delay(1);
 }
