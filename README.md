@@ -1,4 +1,7 @@
 # medical_service_robot
+<img src="https://img.shields.io/github/downloads/ebrahimabdelghfar/medical_service_robot/total.svg"/></br>
+# Used programs
+  <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/> <img src="https://img.shields.io/badge/Arduino_IDE-00979D?style=for-the-badge&logo=arduino&logoColor=white"/>
 # Idea 
 The idea of the project is to serve medicine in time in the home for old people. When the medicine time has come it will send an email to the user or send a message, the user will open the robot application and send to the robot his/her location.after that, the robot will move by line following and use computer vision to detect the room and the user.
 # Implementation 
