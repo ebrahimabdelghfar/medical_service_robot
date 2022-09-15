@@ -5,7 +5,7 @@
 # Idea 
 The idea of the project is to serve medicine in time in the home for old people. When the medicine time has come it will send an email to the user or send a message, the user will open the robot application and send to the robot his/her location.after that, the robot will move by line following and use computer vision to detect the room and the user.
 # Implementation 
-We have simulated our project using V-rep and ROS noetic
+We have simulated our project using CoppeliaSim V-rep and ROS noetic
 # Simulation environment
 ![Screenshot from 2022-03-28 20-48-08](https://user-images.githubusercontent.com/81301684/162585359-6243d6bb-7fa4-4fd5-a3e4-1ffebf38c746.png)
 # simulation Video
