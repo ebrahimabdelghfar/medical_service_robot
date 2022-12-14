@@ -12,8 +12,3 @@ We have simulated our project using CoppeliaSim V-rep and ROS noetic
 https://user-images.githubusercontent.com/81301684/162585537-2fe7a13f-afb4-4697-9975-415456c42906.mp4
 # Robot photo
 ![image](https://user-images.githubusercontent.com/81301684/162585580-45bd2ad9-d448-4851-af26-37ef66200b6c.png)
-
-
-
-
-
